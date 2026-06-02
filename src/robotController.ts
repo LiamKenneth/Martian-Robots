@@ -10,6 +10,9 @@ export class RobotController {
     }
 
     execute(robot: Robot, instructions: string, grid: Grid): void {
+        if (instructions.length >= 100) {
+            throw new Error("Instruction string length must be less than 100 characters.");
+        }
         for (const instruction of instructions) {
             if (robot.status === "LOST") {
                 break;

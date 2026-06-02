@@ -12,6 +12,13 @@ describe("Robot", () => {
       expect(robot.orientation).toBe("E");
       expect(robot.status).toBe("Active");
     });
+
+    it("should throw an error for coordinates outside 0-50", () => {
+      expect(() => new Robot(-1, 5, "N")).toThrow("Robot coordinates must be between 0 and 50.");
+      expect(() => new Robot(51, 5, "N")).toThrow("Robot coordinates must be between 0 and 50.");
+      expect(() => new Robot(5, -1, "N")).toThrow("Robot coordinates must be between 0 and 50.");
+      expect(() => new Robot(5, 51, "N")).toThrow("Robot coordinates must be between 0 and 50.");
+    });
   });
 
   describe("turning", () => {
@@ -102,6 +109,14 @@ describe("Robot", () => {
       const robot = new Robot(1, 1, "E");
       customController.execute(robot, "U", grid);
       expect(robot.orientation).toBe("W");
+    });
+
+    it("should throw an error for instructions exceeding 99 characters in length", () => {
+      const robot = new Robot(1, 1, "E");
+      const longInstructions = "F".repeat(100);
+      expect(() => controller.execute(robot, longInstructions, grid)).toThrow(
+        "Instruction string length must be less than 100 characters."
+      );
     });
   });
 });

@@ -10,6 +10,9 @@ export class Robot {
     public status: RobotStatus;
 
     constructor(x: number, y: number, orientation: Orientation) {
+        if (x < 0 || y < 0 || x > 50 || y > 50) {
+            throw new Error("Robot coordinates must be between 0 and 50.");
+        }
         this.x = x;
         this.y = y;
         this.orientation = orientation;

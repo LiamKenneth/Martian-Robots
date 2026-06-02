@@ -7,6 +7,13 @@ describe("Grid", () => {
       expect(grid.maxX).toBe(5);
       expect(grid.maxY).toBe(3);
     });
+
+    it("should throw an error for coordinates outside 0-50", () => {
+      expect(() => new Grid(-1, 5)).toThrow("Grid coordinates must be between 0 and 50.");
+      expect(() => new Grid(51, 5)).toThrow("Grid coordinates must be between 0 and 50.");
+      expect(() => new Grid(5, -1)).toThrow("Grid coordinates must be between 0 and 50.");
+      expect(() => new Grid(5, 51)).toThrow("Grid coordinates must be between 0 and 50.");
+    });
   });
 
   describe("isCoordinateOffGrid", () => {

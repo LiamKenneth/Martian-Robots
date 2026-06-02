@@ -21,6 +21,16 @@ npm run start
 npm test
 ```
 
+## If I had more time
+- **Input Parser**: Main does too much; I would build a dedicated `Parser` class to cleanly isolate text parsing from grid/robot execution. 
+
+- **Input from file**: In a real app, the input would not be hardcoded in a string. I would build a way to parse input from a file or from the command line using command line arguments.
+
+- **Graceful Parse Error Recovery**: Currently, if a single robot's input text is malformed, the entire sequence stops executing. I would update the entry point to catch parsing/initialization errors on a per-robot basis, log a warning, and continue executing the other valid robots in the sequence.
+
+- **Github Actions**: Set up a github actions workflow to run the tests and linting on every PR to the main branch.
+
+
 ## Task
 The surface of Mars can be modelled by a rectangular grid around which robots are able to
 move according to instructions provided from Earth. You are to write a program that

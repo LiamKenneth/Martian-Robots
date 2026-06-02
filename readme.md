@@ -9,6 +9,11 @@ Make sure you have [Node.js](https://nodejs.org/) (v22 or higher) installed on y
 ```
 npm install
 ```
+### Running Task
+
+```
+npm run start
+```
 
 ### Running Tests
 
@@ -79,4 +84,6 @@ LLFFFLFLFL
 ```
 1 1 E
 3 3 N LOST
+2 3 S
+
 ```

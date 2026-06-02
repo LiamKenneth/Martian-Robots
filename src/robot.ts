@@ -48,12 +48,10 @@ export class Robot {
 
         if (grid.isCoordinateOffGrid(nextX, nextY)) {
             if (grid.hasScent(this.x, this.y)) {
-                console.log("scent found, command ignored");
                 return;
             }
             this.status = "LOST";
             grid.leaveScent(this.x, this.y);
-            console.log(`scent left at ${this.x},${this.y}, robot lost`);
         } else {
             this.x = nextX;
             this.y = nextY;

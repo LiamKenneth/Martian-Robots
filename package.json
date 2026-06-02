@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/main.ts",
   "scripts": {
+    "start": "ts-node src/main.ts",
     "test": "jest",
     "lint": "eslint src tests --ext .ts",
     "prepare": "husky"
@@ -19,6 +20,7 @@
     "husky": "^9.1.7",
     "jest": "^30.4.2",
     "ts-jest": "^29.4.11",
+    "ts-node": "^10.9.2",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.60.0"
   }

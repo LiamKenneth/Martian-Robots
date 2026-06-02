@@ -9,13 +9,13 @@ Make sure you have [Node.js](https://nodejs.org/) (v22 or higher) installed on y
 ```
 npm install
 ```
-### Running Task
+### Run Task
 
 ```
 npm run start
 ```
 
-### Running Tests
+### Run Tests
 
 ```
 npm test

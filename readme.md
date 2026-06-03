@@ -21,6 +21,26 @@ npm run start
 npm test
 ```
 
+## Design & Technical Choices
+
+This solution is designed with scalability, extensibility, and the Single Responsibility Principle in mind.
+
+### 1. Extensibility via Command & Registry Patterns
+The requirements state: *"There is also a possibility that additional command types may be required in the future and provision should be made for this."*
+- To satisfy this, the **Command Pattern** was implemented. Instructions (like `L`, `R`, `F`) are encapsulated as distinct objects implementing a shared `Command` interface.
+- A **CommandRegistry** maps string characters to their concrete commands. This allows developers to register new instructions without modifying core system classes adhering to the Open/Closed Principle.
+
+### 2. Separation of Concerns 
+- **`grid.ts`**: Focuses solely on managing the Martian terrain, boundaries, and scents.
+- **`robot.ts`**: Enforces strict encapsulation of a robot's state and simple atomic updates.
+- **`commands.ts`**: Contains concrete instruction command implementations and the registry.
+- **`robotController.ts`**: Serves as the invoker, validating inputs and orchestrating instruction execution without cluttering the `Robot` model itself.
+
+### 3. TypeScript & Tooling
+- **TypeScript** Chosen for strict type safety. It prevents bad data from causing runtime crashes and creates self-documenting, easily refactorable code.
+- **Jest** is used for unit testing, structuring tests cleanly into separate test suites per class.
+- **ESLint** is configured for code consistency and quality, hooked into **Husky**'s pre-commit hooks to verify everything compiles, passes tests, and is correctly formatted before code is committed. Added to satify -  "it's a good idea to approach the task in the context of being part of a cross functional team"
+
 ## If I had more time
 - **Input Parser**: Main does too much; I would build a dedicated `Parser` class to cleanly isolate text parsing from grid/robot execution. 
 
